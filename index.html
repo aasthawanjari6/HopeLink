@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HopeLink – Connecting Hearts, Rebuilding Lives</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#report">Report</a></li>
+      <li><a href="#ngos">Nearby NGOs</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Home Section -->
+  <section id="home" class="home-section">
+    <h1>Welcome to HopeLink 💙</h1>
+    <p>Connecting Hearts, Rebuilding Lives</p>
+    <a href="#report" class="btn">Report Now</a>
+  </section>
+
+  <!-- Report Section -->
+  <section id="report" class="report-section">
+    <h2>📍 Report a Homeless Individual</h2>
+    <form id="reportForm">
+      <input type="text" id="location" placeholder="Enter location or address" required>
+      <textarea id="description" placeholder="Describe the situation" required></textarea>
+      <input type="text" id="name" placeholder="Your name (optional)">
+      <button type="submit">Submit Report</button>
+    </form>
+
+    <!-- Display Submitted Reports Here -->
+    <div id="reportOutput" class="report-output"></div>
+  </section>
+
+  <!-- NGOs Section -->
+  <section id="ngos" class="ngo-section">
+    <h2>Nearby NGOs & Partners</h2>
+    <div class="ngo-list">
+      <div class="ngo-card">
+        <h3>Shelter Foundation</h3>
+        <p>Provides food and temporary shelter to the homeless.</p>
+      </div>
+      <div class="ngo-card">
+        <h3>Smile Foundation</h3>
+        <p>Works for education and healthcare support.</p>
+      </div>
+      <div class="ngo-card">
+        <h3>Goonj</h3>
+        <p>Focuses on rural development and community care.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <h2>About HopeLink</h2>
+    <p>
+      HopeLink is a compassionate digital platform designed to connect citizens with NGOs 
+      to help homeless individuals in need. Our mission is to build a caring society 
+      where everyone contributes to making lives better.
+    </p>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <h2>Contact Us</h2>
+    <p>Email: hopelinkteam@gmail.com</p>
+    <p>Follow us on: 
+      <a href="#">Instagram</a> | 
+      <a href="#">Twitter</a> | 
+      <a href="#">LinkedIn</a>
+    </p>
+  </section>
+
+  <!-- JavaScript -->
+  <script>
+    const form = document.getElementById('reportForm');
+    const output = document.getElementById('reportOutput');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); // prevent page reload
+
+        // Get values
+        const location = document.getElementById('location').value.trim();
+        const description = document.getElementById('description').value.trim();
+        const name = document.getElementById('name').value.trim() || "Anonymous";
+
+        // Create a report card
+        const reportCard = document.createElement('div');
+        reportCard.classList.add('ngo-card'); // use same card styling
+        reportCard.innerHTML = `
+            <h3>${name}</h3>
+            <p><strong>Location:</strong> ${location}</p>
+            <p>${description}</p>
+        `;
+
+        // Add to top of report output
+        output.prepend(reportCard);
+
+        // Clear form
+        form.reset();
+    });
+  </script>
+
+</body>
+</html>
